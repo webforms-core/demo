@@ -34,7 +34,7 @@ WebFormsOptions.MaxRetryCount = 3;
 WebFormsOptions.RetryRequestInterval = 3000;
 
 // State
-WebFormsOptions.StateBodyLocation = "<body>";
+WebFormsOptions.StateBodyLocation = "<main>";
 WebFormsOptions.UseSPALink = true;
 WebFormsOptions.SPASaveStateDelay = 500;
 WebFormsOptions.SetTitleBySPALink = true;
