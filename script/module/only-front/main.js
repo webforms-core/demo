@@ -24,6 +24,7 @@ export function PageLoad(evt)
     <p>
     Unlike approaches that require a separate frontend application, WebForms Core does not require React, Vue, Angular, JSX, a Virtual DOM, or a frontend build system. HTML remains HTML, while WebForms Core provides the command layer that allows the server to control the interface.
     </p>
+    <img src="/image/webforms-core_image.jpg" alt="WebForms Core">
     <p>
     WebForms Core is also designed around a stateless and RESTful architecture. The server does not need to maintain a server-side copy of the browser DOM or a persistent UI state. Applications can use HTTP, WebSocket, and Server-Sent Events depending on their communication requirements.
     </p>
