@@ -86,38 +86,44 @@ export function PageLoad(evt)
     ).join("");
 
     return `
-        <h1>Memory Tiles</h1>
-
-        <div id="board">
-            ${board}
+        <div style="text-align: center;">
+            <h1>Memory Tiles</h1>
+    
+            <div id="board">
+                ${board}
+            </div>
+    
+            <p>Moves: <span id="moves">0</span></p>
+            <p id="result"></p>
+            <p>Matches: <span id="matches">0</span></p>
+    
+            <b id="reset">New Game</b>
+    
+            <style>
+                #board {
+                    display: grid;
+                    grid-template-columns: repeat(4, 80px);
+                    gap: 10px;
+                    justify-content: center;
+                    margin: 30px auto;
+                }
+    
+                .tile {
+                    width: 80px;
+                    height: 80px;
+                    font-size: 32px;
+                    cursor: pointer;
+                }
+    
+                .tile:disabled {
+                    opacity: 1;
+                }
+    
+                #reset {
+                    cursor: pointer;
+                }
+            </style>
         </div>
-
-        <p>Moves: <span id="moves">0</span></p>
-        <p id="result"></p>
-        <p>Matches: <span id="matches">0</span></p>
-
-        <b id="reset">New Game</b>
-
-        <style>
-            #board {
-                display: grid;
-                grid-template-columns: repeat(4, 80px);
-                gap: 10px;
-                justify-content: center;
-                margin: 30px auto;
-            }
-
-            .tile {
-                width: 80px;
-                height: 80px;
-                font-size: 32px;
-                cursor: pointer;
-            }
-
-            #reset {
-                cursor: pointer;
-            }
-        </style>
     `
     + form.exportToHtmlComment();
 }
