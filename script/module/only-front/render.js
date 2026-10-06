@@ -11,7 +11,7 @@ export function PageLoad(evt)
 
     form.renderClosure(f =>
     {
-        f.replace(InputPlace.Root, "{{name}}", Fetch.getValue("name"));
+        f.replace(InputPlace.ROOT, "{{name}}", Fetch.getValue("name"));
         f.replace("-", "{{email}}", Fetch.getValue("email"));
         f.replace("-", "{{phone}}", Fetch.getValue("phone"));
         f.replace("-", "{{age}}", Fetch.getValue("age"));
@@ -134,7 +134,7 @@ export function PageLoad(evt)
                 <input type="button" id="render" value="Render">
             </div>
 
-            <fieldset id="user" class="user-info">
+            <fieldset id="user" class="user-info" style="background-color:{{favorite-color}}">
                 <legend>User Info:</legend>
                 <div>Name: {{name}}</div>
                 <a href="mailto:{{email}}">Email: {{email}}</a>
