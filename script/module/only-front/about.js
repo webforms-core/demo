@@ -1,4 +1,4 @@
-﻿import { WebForms, HtmlEvent } from "/script/module/WebForms.js";
+﻿import { WebForms, HtmlEvent } from "/demo/script/module/WebForms.js";
 
 export function PageLoad(evt)
 {
