@@ -5,7 +5,7 @@ export function PageLoad(evt)
     const form = new WebForms();
 
     form.setCommentEvent("render", HtmlEvent.OnClick, "set-render");
-    form.goTo("set-render");
+    form.goToIndex("set-render");
 
     form.startIndex("set-render");
 
