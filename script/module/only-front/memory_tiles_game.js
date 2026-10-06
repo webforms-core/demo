@@ -113,10 +113,7 @@ export function PageLoad(evt)
                     height: 80px;
                     font-size: 32px;
                     cursor: pointer;
-                }
-    
-                .tile:disabled {
-                    opacity: 1;
+                    color: unset !important;
                 }
     
                 #reset {
