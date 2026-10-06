@@ -4,7 +4,7 @@ export function PageLoad(evt)
 {
     const form = new WebForms();
 
-    form.setTextColor("<main>", "#f9c792");
+    form.setBackgroundColor("<main>", "#f9c792");
 
     return `
 <p>
