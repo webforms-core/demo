@@ -24,5 +24,13 @@ This demo was built using the <b>WebForms</b> class for JavaScript. The same Web
 <p>
 This makes WebForms Core a language-agnostic UI technology: developers can use their preferred server-side programming language while working with the same underlying WebForms Core architecture and client-side Executor.
 </p>
+During the development of this demo, the following default WebFormsJS settings were changed from `&lt;body&gt;` to `&lt;main&gt;`:
+
+----------------------------------------------------
+WebFormsOptions.ResponseLocation = "&lt;main&gt;";
+WebFormsOptions.StateBodyLocation = "&lt;main&gt;";
+----------------------------------------------------
+
+It is recommended that you apply these settings when developing your own systems with WebForms Core. The `&lt;body&gt;` element may contain the footer, header, navigation, menus, and other elements. Using `&lt;body&gt;` as the default location can cause these elements to be removed or replaced by WebForms Core operations. Using `&lt;main&gt;` keeps the surrounding page structure intact.
     `
 }
