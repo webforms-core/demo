@@ -24,7 +24,7 @@ WebFormsOptions.CheckValidityForFormSubmit = true;
 
 // Response
 WebFormsOptions.SetResponseInsideDivTag = true;
-WebFormsOptions.ResponseLocation = "<body>";
+WebFormsOptions.ResponseLocation = "<main>";
 WebFormsOptions.CreateCommentForWebFormsResponse = false;
 
 // Non-Response Management
