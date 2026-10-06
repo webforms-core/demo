@@ -12,11 +12,11 @@ export function PageLoad(evt)
     form.renderClosure(f =>
     {
         f.replace(InputPlace.Root, "{{name}}", Fetch.getValue("name"));
-        f.replace(InputPlace.Root, "{{email}}", Fetch.getValue("email"));
-        f.replace(InputPlace.Root, "{{phone}}", Fetch.getValue("phone"));
-        f.replace(InputPlace.Root, "{{age}}", Fetch.getValue("age"));
-        f.replace(InputPlace.Root, "{{city}}", Fetch.getValue("city"));
-        f.replace(InputPlace.Root, "{{favorite-color}}", Fetch.getValue("favorite-color"), true);
+        f.replace("-", "{{email}}", Fetch.getValue("email"));
+        f.replace("-", "{{phone}}", Fetch.getValue("phone"));
+        f.replace("-", "{{age}}", Fetch.getValue("age"));
+        f.replace("-", "{{city}}", Fetch.getValue("city"));
+        f.replace("-", "{{favorite-color}}", Fetch.getValue("favorite-color"));
     }, "user");
 
     return `
