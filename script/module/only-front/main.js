@@ -7,6 +7,7 @@ export function PageLoad(evt)
     form.setBackgroundColor("<main>", "#f9c792");
 
     return `
+<h2>What is WebForms Core?</h2>
 <p>
 WebForms Core is a server-orchestrated UI technology for building interactive HTML interfaces from server-side code. It was introduced by Elanat in 2024 with a different approach to web UI development: instead of moving UI logic into a separate client-side application, the server remains responsible for orchestrating the interface while the browser executes lightweight commands against the HTML DOM.
 </p>
