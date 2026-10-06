@@ -16,7 +16,7 @@ export function PageLoad(evt)
         f.replace("-", "{{phone}}", Fetch.getValue("phone"));
         f.replace("-", "{{age}}", Fetch.getValue("age"));
         f.replace("-", "{{city}}", Fetch.getValue("city"));
-        f.replace("-", "{{favorite-color}}", Fetch.getValue("favorite-color"));
+        f.replace("-", "{{favorite-color}}", Fetch.getValue("favorite-color"), true);
     }, "user");
 
     return `
@@ -134,7 +134,7 @@ export function PageLoad(evt)
                 <input type="button" id="render" value="Render">
             </div>
 
-            <fieldset id="user" class="user-info" style="background-color:{{favorite-color}}">
+            <fieldset id="user" class="user-info">
                 <legend>User Info:</legend>
                 <div>Name: {{name}}</div>
                 <a href="mailto:{{email}}">Email: {{email}}</a>
