@@ -19,7 +19,7 @@ export function PageLoad(evt)
     form.insertClass("$", "selected");
     form.setDisabled("$", 1);
     form.setText("$", Fetch.getAttribute("$", "data-card"));
-    form.wfBreak();
+    form.break();
     form.endBracket();
 
     form.increase("moves", 1);
