@@ -1,4 +1,4 @@
-﻿import { WebForms } from "/script/module/WebForms.js";
+﻿import { WebForms } from "/demo/script/module/WebForms.js";
 
 export function PageLoad(evt)
 {
