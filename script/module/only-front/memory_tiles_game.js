@@ -68,26 +68,28 @@ export function PageLoad(evt)
     form.startIndex("reload");
     form.reloadPage();
 
+    const cards = [
+        "🍎", "🍎",
+        "🍋", "🍋",
+        "🍊", "🍊",
+        "🍉", "🍉",
+        "🍇", "🍇",
+        "🥝", "🥝",
+        "🍓", "🍓",
+        "🍒", "🍒"
+    ];
+
+    cards.sort(() => Math.random() - 0.5);
+
+    const board = cards.map((card, index) =>
+        `<button id="tag-${index}" class="tile" data-card="${card}">?</button>`
+    ).join("");
+
     return `
         <h1>Memory Tiles</h1>
 
         <div id="board">
-            <button id="tag-0" class="tile" data-card="🍎">?</button>
-            <button id="tag-1" class="tile" data-card="🍎">?</button>
-            <button id="tag-2" class="tile" class="tile" data-card="🍋">?</button>
-            <button id="tag-3" class="tile" data-card="🍋">?</button>
-            <button id="tag-4" class="tile" data-card="🍊">?</button>
-            <button id="tag-5" class="tile" data-card="🍊">?</button>
-            <button id="tag-6" class="tile" data-card="🍉">?</button>
-            <button id="tag-7" class="tile" data-card="🍉">?</button>
-            <button id="tag-8" class="tile" data-card="🍇">?</button>
-            <button id="tag-9" class="tile" data-card="🍇">?</button>
-            <button id="tag-10" class="tile" data-card="🥝">?</button>
-            <button id="tag-11" class="tile" data-card="🥝">?</button>
-            <button id="tag-12" class="tile" data-card="🍓">?</button>
-            <button id="tag-13" class="tile" data-card="🍓">?</button>
-            <button id="tag-14" class="tile" data-card="🍒">?</button>
-            <button id="tag-15" class="tile" data-card="🍒">?</button>
+            ${board}
         </div>
 
         <p>Moves: <span id="moves">0</span></p>
