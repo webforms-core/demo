@@ -44,7 +44,7 @@ export function PageLoad(evt)
     form.isEqualTo("8", Fetch.getText("matches"));
     form.message("🎉 You Win!");
 
-    form.wfBreak();
+    form.break();
     form.endBracket();
 
     // No match
