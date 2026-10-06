@@ -3,13 +3,13 @@ import { WebForms } from "/demo/script/module/WebForms.js";
 export function PageLoad(evt)
 {
     const sales = [
-        ["Saturday", 80],
         ["Sunday", 55],
         ["Monday", 95],
         ["Tuesday", 40],
         ["Wednesday", 70],
         ["Thursday", 30],
-        ["Friday", 50]
+        ["Friday", 50],
+        ["Saturday", 80]
     ];
 
     const form = new WebForms();
