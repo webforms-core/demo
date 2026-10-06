@@ -9,7 +9,7 @@ export function PageLoad(evt)
 
     form.startIndex("set-render");
 
-    form.render(f =>
+    form.renderClosure(f =>
     {
         f.replace(InputPlace.Root, "{{name}}", Fetch.getValue("name"));
         f.replace("-", "{{email}}", Fetch.getValue("email"));
