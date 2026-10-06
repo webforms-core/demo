@@ -5,7 +5,7 @@ export function PageLoad(evt)
     const form = new WebForms();
 
     return `
-<h2>About WebForms Core</h2>
+<h2>About WebForms Core Demo</h2>
 <p>
 WebForms Core consists of a JavaScript library called <b>WebFormsJS</b>, distributed as the physical file <b>web-forms.js</b>, and a general-purpose <b>WebForms</b> God Class that has been ported and made available for 18 programming languages.
 </p>
