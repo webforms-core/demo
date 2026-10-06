@@ -8,4 +8,6 @@
     window.addEventListener("hashchange", root);
 
     root();
+
+    return "";
 }
