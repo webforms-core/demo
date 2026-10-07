@@ -24,6 +24,11 @@ export function PageLoad(evt)
 
     form.increase("moves", 1);
 
+    form.Exist(Fetch.save("pending"));
+    form.break();
+    form.else();
+    form.addSaveValue("pending", "true");
+
     // Second tile
     form.setClass("$", "selected");
     form.setDisabled("$", 1);
@@ -43,7 +48,8 @@ export function PageLoad(evt)
 
     form.isEqualTo("8", Fetch.getText("matches"));
     form.message("🎉 You Win!");
-
+    
+    form.removeSave("pending");
     form.break();
     form.endBracket();
 
@@ -63,7 +69,8 @@ export function PageLoad(evt)
 
     form.setText("result", "Try Again");
     form.setText("moves", Fetch.getText("moves"));
-
+    form.removeSave("pending");
+    
     // New game
     form.startIndex("reload");
     form.reloadPage();
