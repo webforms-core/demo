@@ -86,7 +86,11 @@ export function PageLoad(evt)
         "🍒", "🍒"
     ];
 
-    cards.sort(() => Math.random() - 0.5);
+    // Fisher–Yates Shuffle
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
 
     const board = cards.map((card, index) =>
         `<button id="tag-${index}" class="tile" data-card="${card}">?</button>`
