@@ -24,7 +24,7 @@ export function PageLoad(evt)
 
     form.increase("moves", 1);
 
-    form.Exist(Fetch.save("pending"));
+    form.exist(Fetch.save("pending"));
     form.break();
     form.else();
     form.addSaveValue("pending", "true");
