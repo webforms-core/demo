@@ -27,6 +27,7 @@ export function PageLoad(evt)
     form.increase("price", 1);
 
     return `
+        <h2>Custom Event</h2>
         <input id="nameBox" type="text" placeholder="Type 'hello'">
         <div id="price">96</div>
         <p>Click to Greater 100</p>
