@@ -22,12 +22,12 @@ export function PageLoad(evt)
     form.break();
     form.endBracket();
 
-    form.increase("moves", 1);
-
     form.exist(Fetch.save("pending"));
     form.break();
     form.else();
     form.addSaveValue("pending", "true");
+
+    form.increase("moves", 1);
 
     // Second tile
     form.setClass("$", "selected");
@@ -48,7 +48,7 @@ export function PageLoad(evt)
 
     form.isEqualTo("8", Fetch.getText("matches"));
     form.message("🎉 You Win!");
-    
+
     form.removeSave("pending");
     form.break();
     form.endBracket();
