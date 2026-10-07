@@ -17,6 +17,7 @@ export function PageLoad(evt)
     form.setValue("Clock", Fetch.cache("clock"));
 
     return `
+        <h2>Set Format</h2>
         <button id="SetFormat">Click to Set Format</button>
         <input type="text" id="Money" value="12345678">
         <input type="text" id="Clock" value="15:1:3">
