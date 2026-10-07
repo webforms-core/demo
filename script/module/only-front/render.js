@@ -109,9 +109,9 @@ export function PageLoad(evt)
         </style>
 
         <div class="render-demo">
-
-            <h2>User</h2>
-
+            <h2>Render</h2>
+            
+            <h3>User</h3>
             <div class="user-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" value="Adriano">
