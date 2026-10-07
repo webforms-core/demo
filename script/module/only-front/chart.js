@@ -17,6 +17,7 @@ export function PageLoad(evt)
     form.GenerateBarChart("ChartBox", sales, "Weekly sales");
 
     return `
+        <h2>Chart</h2>
         <div id="ChartBox"></div>
     ` + form.exportToHtmlComment();
 }
