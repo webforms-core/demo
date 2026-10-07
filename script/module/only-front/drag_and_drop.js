@@ -78,7 +78,8 @@ export function PageLoad(evt)
                 display: none;
             }
         </style>
-
+        
+        <h2>Drag and Drop</h2>
         <div id="dragZone">
             <div class="dragitem" id="dragitem1" draggable="true">Drag me! 1</div>
             <div class="dragitem" id="dragitem2" draggable="true">Drag me! 2</div>
