@@ -30,8 +30,8 @@ export function PageLoad(evt)
     form.saveValue("Phone", "phone");
     form.setFormatSaveValue(
         "phone",
-        "^(\\d{3})(\\d{3})(\\d{4})$",
-        "($$1) $$2-$$3"
+        "^(\\d{4})(\\d{3})(\\d{4})$",
+        "$$1-$2-$3"
     );
     form.setValue("Phone", Fetch.save("phone"));
 
@@ -40,16 +40,14 @@ export function PageLoad(evt)
     form.setFormatCacheValue(
         "date",
         "^(\\d{4})(\\d{2})(\\d{2})$",
-        "$$1-$$2-$$3"
+        "$$1-$2-$3"
     );
     form.setValue("Date", Fetch.cache("date"));
 
     return `
         <h2>Set Format</h2>
 
-        <button id="SetFormat">
-            Click to Set Format
-        </button>
+        <button id="SetFormat">Click to Set Format</button>
 
         <br><br>
 
@@ -66,6 +64,5 @@ export function PageLoad(evt)
         <br><br>
 
         <input type="text" id="Date" value="20261008">
-
     ` + form.exportToHtmlComment();
 }
