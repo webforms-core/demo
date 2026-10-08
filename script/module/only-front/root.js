@@ -17,7 +17,7 @@ export function PageLoad(evt)
     form.setCommentEvent("<nav>|<a>*", HtmlEvent.OnClick, "close-menu");
 
     form.startIndex("close-menu");
-    form.setChecked("menu-toggle", true);
+    form.setChecked("menu-toggle", false);
 
     return form.response();
 }
