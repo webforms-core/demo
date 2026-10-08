@@ -8,12 +8,12 @@
     "stream": "https://stream08.iloveradio.de/iloveradio2.mp3"
   },
   {
-    "title": "SomaFM - Drone Zone",
-    "stream": "https://ice1.somafm.com/dronezone-128-mp3"
+    "title": "011FM Top 40 Pop",
+    "stream": "https://listen.011fm.com/stream18"
   },
   {
-    "title": "SomaFM - DEF CON Radio",
-    "stream": "https://ice1.somafm.com/defcon-128-mp3"
+    "title": "MCM FM",
+    "stream": "https://webradio.mcm.fm:10443/hit128"
   },
   {
     "title": "I LOVE 2 DANCE",
@@ -21,6 +21,6 @@
   },
   {
     "title": "RADIO FAAZ",
-    "stream": "https://www.radiofaaz.com/proxy.php/stream"
+    "stream": "https://theonestopradio.com/stream?url=http://www.radiofaaz.com:8000/radiofaaz"
   }
 ]
