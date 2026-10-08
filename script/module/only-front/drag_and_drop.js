@@ -49,8 +49,7 @@ export function PageLoad(evt)
     form.addText("dragZone", Fetch.save());
      
     form.startIndex("touch-start");
-    //form.elementExists("dragZone|{{id}}");
-    form.message("dragZone|{{id}}");
+    form.elementExists("dragZone|{{id}}");
     form.assignReplace("{{id}}", Fetch.getId("$"));
     form.addText("dropZone", Fetch.getOuterText("$"));
     form.else();
