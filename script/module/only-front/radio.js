@@ -11,7 +11,7 @@ export function PageLoad(evt)
 
     form.startBracket();
         form.addText("{radio-container}", Fetch.loadHtml("/demo/api/template.html", "Radio"));
-        form.bindJsonToTemplate(
+        form.bindJSONToTemplate(
             "{radio-card}-1",
             Fetch.formatStore("foreach-data"),
             "[0]",
