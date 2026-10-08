@@ -128,13 +128,11 @@ export function PageLoad(evt)
 
         <body>
 
-            <h1>Radio Stations in JavaScript</h1>
-            <h2>Building a Radio Player with WebForms Core</h2>
+            <h2>Radio Stations</h2>
+            <h3>Building a Radio Player with WebForms Core</h3>
 
             <div class="radio-container"></div>
-
             <audio id="audio" controls></audio>
-
             <div id="now-playing">
                 <span class="playing-indicator">●</span>
                 <span class="speaker-icon">🔊</span>
