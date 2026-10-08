@@ -1,4 +1,6 @@
-﻿export function PageLoad(evt)
+import { WebForms, HtmlEvent } from "/demo/script/module/WebForms.js";
+
+export function PageLoad(evt)
 {
     function root() {
         const path = window.location.hash.substring(1) || "main";
@@ -9,5 +11,13 @@
 
     root();
 
-    return "";
+    const form = new WebForms();
+
+    // For small screens only
+    form.setCommentEvent("<nav>|<a>*", HtmlEvent.OnClick, "close-menu");
+
+    form.startIndex("close-menu");
+    form.setChecked("menu-toggle", true);
+
+    return form.response();
 }
