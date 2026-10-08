@@ -91,6 +91,7 @@ export function PageLoad(evt)
         </style>
         
         <h2>Drag and Drop</h2>
+        <blockquote>With a mouse, items are moved via drag and drop; with touch, they are moved by a direct tap.</blockquote>
         <div id="dragZone">
             <div class="dragitem" id="dragitem1" draggable="true">Drag me! 1</div>
             <div class="dragitem" id="dragitem2" draggable="true">Drag me! 2</div>
