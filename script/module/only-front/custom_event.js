@@ -29,8 +29,8 @@ export function PageLoad(evt)
     return `
         <h2>Custom Event</h2>
         <input id="nameBox" type="text" placeholder="Type 'hello'">
-        <div id="price">96</div>
-        <p>Click to Greater 100</p>
+        <h3 id="price">96</h3>
+        <i>Click to Greater 100</i>
         <button id="IncreacePrice">+</button>
     ` + form.exportToHtmlComment();
 }
