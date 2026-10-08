@@ -28,7 +28,7 @@ WebForms.prototype.GenerateBarChart = function(inputPlace, data, tableName)
 
     this.addStyle(
         inputPlace + "|<b>",
-        "background-color:#fafafa;border:1px solid #ddd;padding:5px;"
+        "display:block;box-sizing:border-box;width:100%;background-color:#fafafa;border:1px solid #ddd;padding:5px;"
     );
 
     this.setText("-", tableName);
@@ -39,7 +39,7 @@ WebForms.prototype.GenerateBarChart = function(inputPlace, data, tableName)
 
     this.addStyle(
         chart,
-        "width:600px;height:300px;display:flex;align-items:flex-end;gap:15px;padding:20px;border:1px solid #ddd;background:#fafafa;"
+        "width:100%;max-width:600px;height:300px;box-sizing:border-box;display:flex;align-items:flex-end;gap:10px;padding:20px;border:1px solid #ddd;background:#fafafa;"
     );
 
     const column = chart + "|.<div>-1";
@@ -51,28 +51,28 @@ WebForms.prototype.GenerateBarChart = function(inputPlace, data, tableName)
 
         this.addStyle(
             column,
-            "height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;"
+            "height:100%;min-width:0;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;"
         );
 
         this.addTag(column, "div");
 
         this.addStyle(
             bar,
-            "width:60px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#4CAF50;"
+            "width:100%;max-width:60px;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#4CAF50;"
         );
 
         this.addTag(bar, "span");
 
         this.addStyle(
             bar,
-            "color:white;font-size:12px;font-weight:bold;"
+            "box-sizing:border-box;color:white;font-size:12px;font-weight:bold;"
         );
 
         this.addTag(column, "label");
 
         this.addStyle(
             column,
-            "margin-top:8px;font-size:12px;color:#333;text-align:center;"
+            "margin-top:8px;font-size:12px;color:#333;text-align:center;white-space:nowrap;"
         );
     });
 
@@ -82,7 +82,15 @@ WebForms.prototype.GenerateBarChart = function(inputPlace, data, tableName)
         const bar = column + "|.<div>";
 
         this.setHeight(bar, item[1] * 2);
-        this.setText(bar + "|.<span>", item[1].toString());
-        this.setText(column + "|.<label>", item[0]);
+
+        this.setText(
+            bar + "|.<span>",
+            item[1].toString()
+        );
+
+        this.setText(
+            column + "|.<label>",
+            item[0]
+        );
     });
 };
