@@ -19,5 +19,5 @@ export function PageLoad(evt)
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
 
-    return form.response();
+    return form.exportToHtmlComment();
 }
