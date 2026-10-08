@@ -37,21 +37,15 @@ export function PageLoad(evt)
             <title>WebForms Core Radio</title>
 
             <style>
-                * {
+                * main {
                     box-sizing: border-box;
                 }
 
-                body {
-                    margin: 0;
-                    min-height: 100vh;
+                main {
                     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                    margin: 60px auto;
                     background: #101114;
                     color: #fff;
-                }
-
-                main {
-                    width: min(720px, calc(100% - 32px));
-                    margin: 60px auto;
                 }
 
                 h1 {
