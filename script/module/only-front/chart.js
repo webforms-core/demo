@@ -28,7 +28,7 @@ WebForms.prototype.GenerateBarChart = function(inputPlace, data, tableName)
 
     this.addStyle(
         inputPlace + "|<b>",
-        "display:block;box-sizing:border-box;width:100%;background-color:#fafafa;border:1px solid #ddd;padding:5px;"
+        "display:block;box-sizing:border-box;width:100%;max-width:600px;background-color:#fafafa;border:1px solid #ddd;padding:5px;"
     );
 
     this.setText("-", tableName);
