@@ -50,18 +50,12 @@ export function PageLoad(evt)
     form.addText("dragZone", Fetch.save());
      
     form.startIndex("touch-start");
-    form.saveOuterText("$");
-    form.saveId("$", "id");
-    
-    form.delete(Fetch.save("id"));
-    form.addText("dropZone", Fetch.save());
+    form.addText("dropZone", Fetch.getOuterText("$"));
+    form.delete("$");
     
     form.startIndex("touch-start-back");
-    form.saveOuterText("$");
-    form.saveId("$", "id");
-    
-    form.delete(Fetch.save("id"));
-    form.addText("dragZone", Fetch.save());
+    form.addText("dragZone", Fetch.getOuterText("$"));
+    form.delete("$");
 
     return `
         <style>
