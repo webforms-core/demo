@@ -25,24 +25,6 @@
             color: #372b1f;
         }
 
-        header {
-            margin-left: 240px;
-            padding: 55px 40px;
-            background: linear-gradient(135deg, #865a22, #e5bba7);
-            color: white;
-        }
-
-        header h1 {
-            margin: 0 0 10px;
-            font-size: 38px;
-        }
-
-        header p {
-            margin: 0;
-            font-size: 17px;
-            opacity: 0.8;
-        }
-
         nav {
             position: fixed;
             left: 0;
@@ -88,6 +70,46 @@
             display: none;
         }
 
+        .page {
+            min-width: 0;
+            margin-left: 240px;
+        }
+
+        header {
+            padding: 55px 40px;
+            background: linear-gradient(135deg, #865a22, #e5bba7);
+            color: white;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 38px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 17px;
+            opacity: 0.8;
+        }
+
+        main {
+            width: min(1000px, calc(100% - 80px));
+            min-height: 420px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            color: #80756b;
+            font-size: 14px;
+        }
+
         input,
         select,
         button {
@@ -120,26 +142,6 @@
             background: #ddd;
         }
 
-        main {
-            width: min(1000px, calc(100% - 80px));
-            min-height: 420px;
-            margin: 40px auto;
-            margin-left: calc(240px + 40px);
-            padding: 40px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-
-        footer {
-            margin-left: 240px;
-            padding: 30px 20px;
-            text-align: center;
-            color: #80756b;
-            font-size: 14px;
-        }
-
         img {
             max-width: 100%;
             height: auto;
@@ -148,13 +150,13 @@
         }
 
         blockquote {
-          border-left: 2px solid #ccc;
-          margin-left: 10px;
-          padding: 10px;
-          font-weight: bold;
+            border-left: 2px solid #ccc;
+            margin-left: 10px;
+            padding: 10px;
+            font-weight: bold;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
 
             .menu-button {
                 display: flex;
@@ -208,8 +210,7 @@
                 cursor: pointer;
             }
 
-            header,
-            footer {
+            .page {
                 margin-left: 0;
             }
 
@@ -225,6 +226,36 @@
                 width: calc(100% - 24px);
                 margin: 24px auto;
                 padding: 24px;
+            }
+
+            footer {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            header {
+                padding: 75px 16px 32px;
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+
+            header p {
+                font-size: 15px;
+            }
+
+            main {
+                width: calc(100% - 16px);
+                margin: 16px auto;
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            footer {
+                padding: 24px 16px;
             }
         }
     </style>
@@ -252,18 +283,22 @@
         <a href="#about">About Demo</a>
     </nav>
 
-    <header>
-        <h1>WebForms Core (WFC)</h1>
-        <p>Server-Orchestrated UI for the Web</p>
-    </header>
+    <div class="page">
 
-    <main>
-        <!-- Content is managed by WebForms Core -->
-    </main>
+        <header>
+            <h1>WebForms Core (WFC)</h1>
+            <p>Server-Orchestrated UI for the Web</p>
+        </header>
 
-    <footer>
-        WebForms Core Technology - Open Source
-    </footer>
+        <main>
+            <!-- Content is managed by WebForms Core -->
+        </main>
+
+        <footer>
+            WebForms Core Technology - Open Source
+        </footer>
+
+    </div>
 
     <script type="module">
         FrontBack(null, "/demo/script/module/only-front/root.js");
