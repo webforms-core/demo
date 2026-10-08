@@ -19,9 +19,9 @@ export function PageLoad(evt)
     return `
         <h2>Set Format</h2>
         <button id="SetFormat">Click to Set Format</button>
-        <br>
+        <br><br>
         <input type="text" id="Money" value="12345678">
-        <br>
+        <br><br>
         <input type="text" id="Clock" value="15:1:3">
     ` + form.exportToHtmlComment();
 }
