@@ -19,7 +19,6 @@ export function PageLoad(evt)
     form.setCommentEvent("-", HtmlEvent.OnDrop, "drop");
     
     form.setCommentEvent("dragZone|<div>*", HtmlEvent.OnTouchStart, "touch-start");
-    form.setCommentEvent("dropZone|<div>*", HtmlEvent.OnTouchStart, "touch-start-back");
 
     form.startIndex("drag-start");
     form.saveOuterText("$");
@@ -50,10 +49,10 @@ export function PageLoad(evt)
     form.addText("dragZone", Fetch.save());
      
     form.startIndex("touch-start");
+    form.elementExists("dragZone|{{id}}");
+    form.assignReplace("{{id}}", Fetch.getId("$"));
     form.addText("dropZone", Fetch.getOuterText("$"));
-    form.delete("$");
-    
-    form.startIndex("touch-start-back");
+    form.else();
     form.addText("dragZone", Fetch.getOuterText("$"));
     form.delete("$");
 
