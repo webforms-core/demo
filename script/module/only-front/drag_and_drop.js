@@ -59,7 +59,8 @@ export function PageLoad(evt)
     return `
         <style>
             #dropZone, #dragZone {
-                width: 600px;
+                width: 100%;
+                max-width: 600px;
                 height: auto;
                 min-height: 200px;
                 border: 2px dashed #ccc;
