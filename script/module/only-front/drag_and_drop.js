@@ -17,12 +17,9 @@ export function PageLoad(evt)
     form.setCommentEvent("-", HtmlEvent.OnDragOver, "drag-over");
     form.setCommentEvent("-", HtmlEvent.OnDragLeave, "drag-leave");
     form.setCommentEvent("-", HtmlEvent.OnDrop, "drop");
-
-    form.setCommentEvent("dragZone|<div>*", HtmlEvent.OnTouchStart, "touch-start");
-    form.setCommentEvent("-", HtmlEvent.OnTouchEnd, "touch-end");
     
+    form.setCommentEvent("dragZone|<div>*", HtmlEvent.OnTouchStart, "touch-start");
     form.setCommentEvent("dropZone|<div>*", HtmlEvent.OnTouchStart, "touch-start-back");
-    form.setCommentEvent("-", HtmlEvent.OnTouchEnd, "touch-end-back");
 
     form.startIndex("drag-start");
     form.saveOuterText("$");
@@ -55,18 +52,14 @@ export function PageLoad(evt)
     form.startIndex("touch-start");
     form.saveOuterText("$");
     form.saveId("$", "id");
-    form.assignDelay(100);
     
-    form.startIndex("touch-end");
     form.delete(Fetch.save("id"));
     form.addText("dropZone", Fetch.save());
     
     form.startIndex("touch-start-back");
     form.saveOuterText("$");
     form.saveId("$", "id");
-    form.assignDelay(100);
     
-    form.startIndex("touch-end-back");
     form.delete(Fetch.save("id"));
     form.addText("dragZone", Fetch.save());
 
