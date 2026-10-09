@@ -23,7 +23,6 @@ export function PageLoad(evt)
 
         <style>
             main {
-                min-height: 100vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -40,7 +39,7 @@ export function PageLoad(evt)
             }
 
             #Clock {
-                padding: 30px 45px;
+                padding: 30px 81px;
                 border: 2px solid #333;
                 border-radius: 12px;
                 background: #000;
