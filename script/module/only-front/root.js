@@ -15,6 +15,7 @@ export function PageLoad(evt)
 
     // For small screens only
     form.setCommentEvent("<nav>|<a>*", HtmlEvent.OnClick, "close-menu");
+    form.setCommentEvent("-", HtmlEvent.OnTouchStart, "close-menu");
 
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
