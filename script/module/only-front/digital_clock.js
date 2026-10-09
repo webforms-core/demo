@@ -17,7 +17,7 @@ export function PageLoad(evt)
     form.goTo(1, 31536000);
 
     return `
-        <h1>WebForms Core Technology in JavaScript</h1>
+        <h2>Digital Clock</h2>
 
         <div id="Clock"></div>
 
