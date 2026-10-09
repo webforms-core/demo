@@ -141,7 +141,7 @@ export function PageLoad(evt)
                 <div>Phone: {{phone}}</div>
                 <div>Age: {{age}}</div>
                 <div>City: {{city}}</div>
-                <div>Favorite Color: {{favorite-color}}</div>
+                <div>Favorite Color: ((favorite-color))</div>
             </fieldset>
 
         </div>
