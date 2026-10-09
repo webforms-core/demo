@@ -11,6 +11,9 @@ export function PageLoad(evt)
     form.replaceSaveValue("clock-format", "{{Second}}", Fetch.DATE_SECONDS);
     form.setFormatSaveValue("clock-format", "(^|:)(\\d)(?=:|$)", "$$10$2");
 
+    form.elementNotExists("Clock");
+    form.break();
+
     form.setText("Clock", Fetch.save("clock-format"));
 
     form.delay(1000);
