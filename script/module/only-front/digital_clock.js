@@ -6,9 +6,9 @@ export function PageLoad(evt)
 
     form.addSaveValue("clock-format", "{{Hour}}:{{Minute}}:{{Second}}");
 
-    form.replaceSaveValue("clock-format", "{{Hour}}", Fetch.dateHours);
-    form.replaceSaveValue("clock-format", "{{Minute}}", Fetch.dateMinutes);
-    form.replaceSaveValue("clock-format", "{{Second}}", Fetch.dateSeconds);
+    form.replaceSaveValue("clock-format", "{{Hour}}", Fetch.DATE_HOURS);
+    form.replaceSaveValue("clock-format", "{{Minute}}", Fetch.DATE_MINUTES);
+    form.replaceSaveValue("clock-format", "{{Second}}", Fetch.DATE_SECONDS);
     form.setFormatSaveValue("clock-format", "(^|:)(\\d)(?=:|$)", "$$10$2");
 
     form.setText("Clock", Fetch.save("clock-format"));
