@@ -43,7 +43,6 @@ export function PageLoad(evt)
 
                 main {
                     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                    margin: 60px auto;
                     background: #101114;
                     color: #fff;
                 }
