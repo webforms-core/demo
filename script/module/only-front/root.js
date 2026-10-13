@@ -9,7 +9,7 @@ export function PageLoad(evt)
     form.setCommentEvent("-", HtmlEvent.OnTouchStart, "close-menu");
 
     form.callFront("/demo/script/module/only-front/main.js", "", "<main>"); // Set default page
-    form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change", "<main>");
+    form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change");
 
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
@@ -19,6 +19,7 @@ export function PageLoad(evt)
     form.setTextOperationSaveValue("hash", "textafter", '#');
     form.callFront("/demo/script/module/only-front/{{path}}.js", "", "<main>");
     form.assignReplace("{{path}}", Fetch.save("hash"));
+    form.message(Fetch.save("hash"));
     
     SetResponse(evt, form.exportToHtmlComment(), "comment");
 }
