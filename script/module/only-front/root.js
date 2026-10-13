@@ -18,7 +18,7 @@ export function PageLoad(evt)
     form.addSaveValue("hash", Fetch.HASH);
     form.setTextOperationSaveValue("hash", "textafter", '#');
     form.callFront("/demo/script/module/only-front/{{path}}.js"); // Set default page
-    form.assignReplace({{path}}, Fetch.save("hash"));
+    form.assignReplace("{{path}}", Fetch.save("hash"));
     
     SetResponse(evt, form.exportToHtmlComment(), "comment");
 }
