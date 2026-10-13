@@ -24,7 +24,7 @@ WebFormsOptions.CheckValidityForFormSubmit = true;
 
 // Response
 WebFormsOptions.SetResponseInsideDivTag = true;
-WebFormsOptions.ResponseLocation = "<body>";
+WebFormsOptions.ResponseLocation = "<main>";
 WebFormsOptions.CreateCommentForWebFormsResponse = false;
 
 // Non-Response Management
@@ -34,7 +34,7 @@ WebFormsOptions.MaxRetryCount = 3;
 WebFormsOptions.RetryRequestInterval = 3000;
 
 // State
-WebFormsOptions.StateBodyLocation = "<body>";
+WebFormsOptions.StateBodyLocation = "<main>";
 WebFormsOptions.UseSPALink = true;
 WebFormsOptions.SPASaveStateDelay = 500;
 WebFormsOptions.SetTitleBySPALink = true;
