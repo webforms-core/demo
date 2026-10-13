@@ -891,7 +891,7 @@ function cb_SetSPALink(obj)
         if (linkHref.startsWith("#"))
         {   
             if (!WebFormsOptions.IgnoreQueryAndHashInSPALink)
-                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${linkHref}', '${linkTitle}');`);
+                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${linkHref}'` + (linkTitle ? `, '${linkTitle}');` : ");"));
             return;
         }
 
