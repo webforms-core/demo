@@ -19,7 +19,6 @@ export function PageLoad(evt)
     form.setTextOperationSaveValue("hash", "textafter", '#');
     form.callFront("/demo/script/module/only-front/{{path}}.js", "", "<main>");
     form.assignReplace("{{path}}", Fetch.save("hash"));
-    form.message(Fetch.save("hash"));
     
     SetResponse(evt, form.exportToHtmlComment(), "comment");
 }
