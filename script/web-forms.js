@@ -916,7 +916,9 @@ function cb_AddHashState(linkHref, linkTitle)
     {
         try
         {
-            cb_SPA.setState(false, location.pathname + location.search + linkHref, linkTitle);
+                history.pushState(window.history.state, "", linkHref);
+    window.scrollTo(0, 0);
+            //cb_SPA.setState(false, location.pathname + location.search + linkHref, linkTitle);
         }
         catch
         {
@@ -2300,8 +2302,8 @@ function SetResponse(evt, ResponseResult, ViewState, RequestName)
         cb_AppendJavaScriptTag(ResponseResult);
         cb_Initialization(cb_GetResponseLocation());
 
-        const path = location.pathname + location.search + location.hash;
-        cb_SPA.setState(false, path);
+        //const path = location.pathname + location.search + location.hash;
+        //cb_SPA.setState(false, path);
     }
 }
 
@@ -8630,14 +8632,7 @@ class cb_SPA
 
         window.addEventListener("popstate", (event) =>
         {
-    console.log("[SPA:popstate:START]", {
-        href: location.href,
-        hash: location.hash,
-        state: event.state,
-        stateHtmlLength: event.state?.html?.length,
-        currentHtmlLength: cb_SPA.getCurrentContent().length,
-        time: performance.now()
-    });            if (cb_PopstateIsPending)
+            if (cb_PopstateIsPending)
             {
                 event.preventDefault();
                 history.forward();
@@ -8646,21 +8641,8 @@ class cb_SPA
                 
             const pathname = location.pathname;
             if (event.state && event.state.html)
-            {console.log("[SPA:RESTORE:BEFORE]", {
-    href: location.href,
-    hash: location.hash,
-    stateTitle: event.state.title,
-    stateHtmlLength: event.state.html.length,
-    currentTitle: document.title,
-    time: performance.now()
-});
+            {
                 cb_GetStateBodyLocation().outerHTML = event.state.html;
-                console.log("[SPA:RESTORE:AFTER]", {
-    href: location.href,
-    hash: location.hash,
-    title: document.title,
-    time: performance.now()
-});
                 document.title = event.state.title || "";
                 window.scrollTo(event.state.scrollX || 0, event.state.scrollY || 0);
 
@@ -8738,24 +8720,9 @@ class cb_SPA
 
     static setState(setNew, pathname, linkTitle)
     {
-            console.log("[SPA:setState:START]", {
-        setNew,
-        pathname,
-        linkTitle,
-        href: location.href,
-        state: history.state,
-        time: performance.now()
-    });
         cb_HideLoader(true);
 
         const html = cb_SPA.getCurrentContent();
-console.log("[SPA:setState:HTML]", {
-        pathname,
-        htmlLength: html.length,
-        title: document.title,
-        hash: location.hash,
-        time: performance.now()
-    });
         cb_SPA.contentCache[pathname] = html;
         cb_SPA.titleCache[pathname] = linkTitle || document.title;
         cb_SPA.scrollX[pathname] = window.scrollX;
@@ -8772,11 +8739,6 @@ console.log("[SPA:setState:HTML]", {
                 scrollX: window.scrollX,
                 scrollY: window.scrollY
             }, "", pathname);
-            console.log("[SPA:setState:END]", {
-    href: location.href,
-    state: history.state,
-    time: performance.now()
-});
         }
         else
         {
@@ -8786,11 +8748,6 @@ console.log("[SPA:setState:HTML]", {
                 scrollX: window.scrollX,
                 scrollY: window.scrollY
             }, "", pathname);
-            console.log("[SPA:setState:END]", {
-    href: location.href,
-    state: history.state,
-    time: performance.now()
-});
         }
     }
 }
