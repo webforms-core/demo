@@ -274,7 +274,7 @@ const cb_WebSocketRetryCount = {};
 function cb_AddWebSocketPath(path)
 {
     if (!path)
-        path = window.location.pathname;
+        path = location.pathname;
 
     if (cb_UseWebSocketPath.indexOf(path) === -1)
         cb_UseWebSocketPath.push(path);
@@ -337,7 +337,7 @@ function cb_WebSocketOnClose(evt, formAction)
 function cb_WebSocketDelete(formAction)
 {
     if (!formAction)
-        formAction = window.location.pathname;
+        formAction = location.pathname;
 
     const ws = cb_WebSockets[formAction];
 
@@ -356,7 +356,7 @@ function cb_WebSocketDelete(formAction)
 function cb_WebSocketIsConnected(path)
 {
     if (!path)
-        path = window.location.pathname;
+        path = location.pathname;
 
     const ws = cb_WebSockets[path];
 
@@ -388,7 +388,7 @@ function cb_WebSocketDoSend(Message)
 function cb_WebSocketSet(formAction)
 {
     if (!formAction)
-        formAction = window.location.pathname;
+        formAction = location.pathname;
 
     const Url = cb_ConvertToWebSocketUrl(formAction)
 
@@ -426,7 +426,7 @@ const cb_SSERetryCount = {};
 function cb_ConnectToSSE(evt, path, shouldReconnect = true, reconnectTryTimeout = 3000, viewState)
 {
     if (!path)
-        path = window.location.pathname;
+        path = location.pathname;
 
     // Close Old Connection On The Same Path (If Exist)
     if (cb_SSEConnections[path])
@@ -876,38 +876,38 @@ function cb_SetSPALink(obj)
 
     links.forEach(link =>
     {       
-        let hrefAttr = link.getAttribute("href");
+        let linkHref = link.getAttribute("href");
 
-        if (!hrefAttr)
+        if (!linkHref)
             return;
 
         const targetAttr = link.getAttribute("target");
 
         let linkTitle = (WebFormsOptions.SetTitleBySPALink && (evt.currentTarget.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", evt.currentTarget.getAttribute("title")) : null);
         
-        if (hrefAttr.length > 1 && hrefAttr.substring(0, 2) == "#~")
-            hrefAttr = hrefAttr.substring(2);
+        if (linkHref.length > 1 && linkHref.substring(0, 2) == "#~")
+            linkHref = linkHref.substring(2);
 
-        if (hrefAttr.startsWith("#"))
+        if (linkHref.startsWith("#"))
         {   
             if (!WebFormsOptions.IgnoreQueryAndHashInSPALink)
-                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${hrefAttr}', '${linkTitle}');`);
+                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${linkHref}', '${linkTitle}');`);
             return;
         }
 
-        if (!hrefAttr.includes("://") && !hrefAttr.startsWith("mailto:") && !hrefAttr.startsWith("tel:") && (!targetAttr || targetAttr === "_self"))
-            cb_AddAttribute(link, "onclick", `PreventDefault(event);GetBack(event, '${hrefAttr}');`);
+        if (!linkHref.includes("://") && !linkHref.startsWith("mailto:") && !linkHref.startsWith("tel:") && (!targetAttr || targetAttr === "_self"))
+            cb_AddAttribute(link, "onclick", `PreventDefault(event);GetBack(event, '${linkHref}');`);
     });
 }
 
-function cb_AddHashState(hrefAttr, linkTitle)
+function cb_AddHashState(linkHref, linkTitle)
 {
-    window.location.href = hrefAttr;
-    
+    location.href = linkHref;
+
     if (linkTitle)
         document.title = linkTitle;
 
-    history.pushState(window.history.state, "", hrefAttr);
+    history.pushState(window.history.state, "", linkHref);
     window.scrollTo(0, 0);
 
     cb_PopstateIsPending = true;
@@ -916,7 +916,7 @@ function cb_AddHashState(hrefAttr, linkTitle)
     {
         try
         {
-            cb_SPA.setState(false, hrefAttr, linkTitle);
+            cb_SPA.setState(false, linkHref, linkTitle);
         }
         catch
         {
@@ -1620,11 +1620,11 @@ function cb_PostRequestAndResponse(evt, ViewState, formElement, retryCount = 0, 
 
     // Create Request Name
     let RequestNameForCache = '<';
-    let RequestName = (FormAction == "") ? window.location.pathname : FormAction;
+    let RequestName = (FormAction == "") ? location.pathname : FormAction;
     if (FormAction.length > 0)
     {
         if (FormAction.substring(0, 1) == '#')
-            RequestName = window.location.pathname + FormAction;
+            RequestName = location.pathname + FormAction;
 
         if (FormAction.Contains('#'))
             RequestNameForCache = '#' + FormAction.GetTextAfter('#');
@@ -1652,7 +1652,7 @@ function cb_PostRequestAndResponse(evt, ViewState, formElement, retryCount = 0, 
     // Check Accepted URL
     if (!cb_IsInternalUrl(FormAction))
     {
-        const tmpURL = new URL(FormAction, window.location.origin);
+        const tmpURL = new URL(FormAction, location.origin);
 
         if (WebFormsOptions.DisableLoadExternalHost)
         {
@@ -1683,7 +1683,7 @@ function cb_PostRequestAndResponse(evt, ViewState, formElement, retryCount = 0, 
     }
 
     // Using WebSocket Protocol
-    const tmpFormAction = (FormAction == "") ? window.location.pathname : FormAction;
+    const tmpFormAction = (FormAction == "") ? location.pathname : FormAction;
     if (window.WebSocket && (cb_UseWebSocket || Form.hasAttribute("usewebsocket") || (cb_UseWebSocketPath.indexOf(tmpFormAction) >= 0)))
     {
         if (cb_UseWebSocket == '$')
@@ -1948,7 +1948,7 @@ function cb_RequestAndResponse(evt, FormAction, ViewState, Method, retryCount = 
     let useHashPath = false;
     if (!FormAction)
         FormAction = "";
-    let RequestName = (FormAction == "") ? window.location.pathname : FormAction;
+    let RequestName = (FormAction == "") ? location.pathname : FormAction;
     if (FormAction.length > 0)
     {
         if (FormAction.length > 1)
@@ -1961,7 +1961,7 @@ function cb_RequestAndResponse(evt, FormAction, ViewState, Method, retryCount = 
         }
 
         if (FormAction.substring(0, 1) == '#')
-            RequestName = window.location.pathname + FormAction;
+            RequestName = location.pathname + FormAction;
 
         if (FormAction.Contains('#'))
             RequestNameForCache = '#' + FormAction.GetTextAfter('#');
@@ -1981,7 +1981,7 @@ function cb_RequestAndResponse(evt, FormAction, ViewState, Method, retryCount = 
     // Check Accepted URL
     if (!cb_IsInternalUrl(FormAction))
     {
-        const tmpURL = new URL(FormAction, window.location.origin);
+        const tmpURL = new URL(FormAction, location.origin);
 
         if (WebFormsOptions.DisableLoadExternalHost)
         {
@@ -2012,7 +2012,7 @@ function cb_RequestAndResponse(evt, FormAction, ViewState, Method, retryCount = 
     }
 
     // Using WebSocket Protocol
-    const tmpFormAction = (FormAction == "") ? window.location.pathname : FormAction;
+    const tmpFormAction = (FormAction == "") ? location.pathname : FormAction;
     if (window.WebSocket && (cb_UseWebSocket || (cb_UseWebSocketPath.indexOf(tmpFormAction) >= 0)))
     {
         if (cb_UseWebSocket == '@')
@@ -2071,8 +2071,8 @@ function cb_RequestAndResponse(evt, FormAction, ViewState, Method, retryCount = 
 
                             if (linkPath)
                             {
-                                const currentUrl = new URL(window.location.href);
-                                const targetUrl = new URL(linkPath, window.location.href);
+                                const currentUrl = new URL(location.href);
+                                const targetUrl = new URL(linkPath, location.href);
                                 
                                 IsIgnoreQueryAndHash = (WebFormsOptions.IgnoreQueryAndHashInSPALink && targetUrl.pathname == currentUrl.pathname);
 
@@ -2299,6 +2299,9 @@ function SetResponse(evt, ResponseResult, ViewState, RequestName)
         cb_GetResponseLocation().replaceChildren(...(WebFormsOptions.SetResponseInsideDivTag ? [tmpDiv] : tmpDiv.childNodes));
         cb_AppendJavaScriptTag(ResponseResult);
         cb_Initialization(cb_GetResponseLocation());
+
+        const path = location.pathname + location.search + location.hash
+        cb_SPA.setState(false, path);
     }
 }
 
@@ -2426,11 +2429,11 @@ async function cb_SendRequestAndResponse(evt, ViewState, path, method = "POST", 
 
     // Create Request Name
     let RequestNameForCache = '<';
-    let RequestName = (path == "") ? window.location.pathname : path;
+    let RequestName = (path == "") ? location.pathname : path;
     if (path.length > 0)
     {
         if (path.substring(0, 1) == '#')
-            RequestName = window.location.pathname + path;
+            RequestName = location.pathname + path;
 
         if (path.Contains('#'))
             RequestNameForCache = '#' + path.GetTextAfter('#');
@@ -2452,7 +2455,7 @@ async function cb_SendRequestAndResponse(evt, ViewState, path, method = "POST", 
     // Check Accepted URL
     if (!cb_IsInternalUrl(path))
     {
-        const tmpURL = new URL(path, window.location.origin);
+        const tmpURL = new URL(path, location.origin);
 
         if (WebFormsOptions.DisableLoadExternalHost)
         {
@@ -2483,7 +2486,7 @@ async function cb_SendRequestAndResponse(evt, ViewState, path, method = "POST", 
     }
 
     // Using WebSocket Protocol
-    const tmpPath = (path == "") ? window.location.pathname : path;
+    const tmpPath = (path == "") ? location.pathname : path;
     if (window.WebSocket && (cb_UseWebSocket || (cb_UseWebSocketPath.indexOf(tmpPath) >= 0)))
     {
         if (cb_UseWebSocket == '$')
@@ -3739,7 +3742,7 @@ async function cb_RunWebFormsValues(evt, RequestName, WebFormsValues, WithoutWeb
                         {
                             var path = v1;
                             if (!path)
-                                path = window.location.pathname + window.location.search + window.location.hash;
+                                path = location.pathname + location.search + location.hash;
 
                             cb_SPA.render(evt, path);
                             continue;
@@ -3769,7 +3772,7 @@ async function cb_RunWebFormsValues(evt, RequestName, WebFormsValues, WithoutWeb
                             else if (v1)
                                 cb_SPA.deleteState(v1);
                             else
-                                cb_SPA.deleteState(window.location.pathname);
+                                cb_SPA.deleteState(location.pathname);
                             continue;
 
                         case 'c':
@@ -4271,7 +4274,7 @@ async function cb_RunWebFormsValues(evt, RequestName, WebFormsValues, WithoutWeb
                         {
                             var [linkPath, linkTitle] = [v1, v2];
                             if (!linkPath)
-                                linkPath = window.location.pathname + window.location.search + window.location.hash;
+                                linkPath = location.pathname + location.search + location.hash;
 
                             cb_SPA.setState(SecondChar == 'S', linkPath, linkTitle);
                             continue;
@@ -6915,21 +6918,21 @@ async function cb_FetchValue(evt, Value)
             case 'w':
                 switch (ActionFeature)
                 {
-                    case 'f': return window.location.href;
-                    case 'P': return window.location.pathname;
+                    case 'f': return location.href;
+                    case 'P': return location.pathname;
                     case 'q':
                         if (Value == '*')
-                            return window.location.search;
+                            return location.search;
                         else
                         {
-                            var params = new URLSearchParams(window.location.search);
+                            var params = new URLSearchParams(location.search);
                             return params.get(Value);
                         }
-                    case 'h': return window.location.hash;
-                    case 'H': return window.location.host;
-                    case 'n': return window.location.hostname;
-                    case 'T': return window.location.port;
-                    case 'o': return window.location.origin;
+                    case 'h': return location.hash;
+                    case 'H': return location.host;
+                    case 'n': return location.hostname;
+                    case 'T': return location.port;
+                    case 'o': return location.origin;
                     case 's': return window.getSelection().toString();
                     case 'x': return window.scrollX;
                     case 'y': return window.scrollY;
@@ -6946,7 +6949,7 @@ async function cb_FetchValue(evt, Value)
                     }
                     case 'S':
                     {
-                        var segments = window.location.pathname.substring(1).split('/');
+                        var segments = location.pathname.substring(1).split('/');
 
                         var index = Value;
 
@@ -6960,7 +6963,7 @@ async function cb_FetchValue(evt, Value)
                     }
                     case 't':
                     {
-                        var hash = window.location.hash;
+                        var hash = location.hash;
                         hash = hash.substring(1);
 
                         if (hash.substring(0, 1) == '~')
@@ -7415,7 +7418,7 @@ function cb_GetUrl(url, fetchScript, isXML, sendPostBackHeader)
         // Check Accepted URL
         if (!cb_IsInternalUrl(url))
         {
-            const tmpURL = new URL(url, window.location.origin);
+            const tmpURL = new URL(url, location.origin);
 
             if (WebFormsOptions.DisableLoadExternalHost)
             {
@@ -7490,9 +7493,9 @@ function cb_GetUrl(url, fetchScript, isXML, sendPostBackHeader)
 
 function cb_ConvertToWebSocketUrl(url)
 {
-    const currentUrl = window.location.href;
-    const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-    const host = window.location.host;
+    const currentUrl = location.href;
+    const protocol = location.protocol === "https:" ? "wss:" : "ws:";
+    const host = location.host;
 
     if (url.startsWith('?'))
         return `${protocol}//${host}${currentUrl.split(host)[1]}${url}`;
@@ -7534,8 +7537,8 @@ function cb_IsInternalUrl(url)
 {
     try
     {
-        const absoluteUrl = new URL(url, window.location.origin);
-        return absoluteUrl.origin === window.location.origin;
+        const absoluteUrl = new URL(url, location.origin);
+        return absoluteUrl.origin === location.origin;
     }
     catch
     {
@@ -8613,17 +8616,17 @@ class cb_SPA
         
         const html = cb_SPA.getCurrentContent();
 
-        cb_SPA.contentCache[window.location.pathname] = html;
-        cb_SPA.titleCache[window.location.pathname] = document.title;
-        cb_SPA.scrollX[window.location.pathname] = window.scrollX;
-        cb_SPA.scrollY[window.location.pathname] = window.scrollY;
+        cb_SPA.contentCache[location.pathname] = html;
+        cb_SPA.titleCache[location.pathname] = document.title;
+        cb_SPA.scrollX[location.pathname] = window.scrollX;
+        cb_SPA.scrollY[location.pathname] = window.scrollY;
 
         history.replaceState({
             html,
             title: document.title,
             scrollX: window.scrollX,
             scrollY: window.scrollY
-        }, "", window.location.pathname + window.location.search + window.location.hash);
+        }, "", location.pathname + location.search + location.hash);
 
         window.addEventListener("popstate", (event) =>
         {
@@ -8634,7 +8637,7 @@ class cb_SPA
                 return;
             }
                 
-            const pathname = window.location.pathname;
+            const pathname = location.pathname;
             if (event.state && event.state.html)
             {
                 cb_GetStateBodyLocation().outerHTML = event.state.html;
@@ -8675,7 +8678,7 @@ class cb_SPA
         }
         else
             if (WebFormsOptions.ReloadOnMissingHistory)
-                window.location.href = pathname; // Fallback
+                location.href = pathname; // Fallback
 
         cb_SPA.InitAfterRestoreState(evt);
 
@@ -8710,7 +8713,7 @@ class cb_SPA
         cb_SPA.scrollX = {};
         cb_SPA.scrollY = {};
 
-        history.replaceState(null, "", window.location.pathname + window.location.search + window.location.hash);
+        history.replaceState(null, "", location.pathname + location.search + location.hash);
     }
 
     static setState(setNew, pathname, linkTitle)
