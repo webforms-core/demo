@@ -9,7 +9,7 @@ export function PageLoad(evt)
     form.setCommentEvent("-", HtmlEvent.OnTouchStart, "close-menu");
 
     form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change");
-    form.goTo("hash-change");
+    form.goToIndex("hash-change");
     
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
