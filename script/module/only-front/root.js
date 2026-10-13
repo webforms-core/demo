@@ -22,5 +22,3 @@ export function PageLoad(evt)
 
     return form.exportToHtmlComment();
 }
-
-PageLoad();
