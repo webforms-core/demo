@@ -24,7 +24,7 @@ WebFormsOptions.CheckValidityForFormSubmit = true;
 
 // Response
 WebFormsOptions.SetResponseInsideDivTag = true;
-WebFormsOptions.ResponseLocation = "<main>";
+WebFormsOptions.ResponseLocation = "<body>";
 WebFormsOptions.CreateCommentForWebFormsResponse = false;
 
 // Non-Response Management
@@ -34,7 +34,7 @@ WebFormsOptions.MaxRetryCount = 3;
 WebFormsOptions.RetryRequestInterval = 3000;
 
 // State
-WebFormsOptions.StateBodyLocation = "<main>";
+WebFormsOptions.StateBodyLocation = "<body>";
 WebFormsOptions.UseSPALink = true;
 WebFormsOptions.SPASaveStateDelay = 500;
 WebFormsOptions.SetTitleBySPALink = true;
@@ -902,13 +902,13 @@ function cb_SetSPALink(obj)
 
 function cb_AddHashState(linkHref, linkTitle)
 {
-    history.pushState(window.history.state, "", linkHref);
-    window.scrollTo(0, 0);
-
-    //location.href = linkHref;
+    location.href = linkHref;
 
     if (linkTitle)
         document.title = linkTitle;
+
+    history.pushState(window.history.state, "", linkHref);
+    window.scrollTo(0, 0);
 
     cb_PopstateIsPending = true;
 
@@ -916,7 +916,7 @@ function cb_AddHashState(linkHref, linkTitle)
     {
         try
         {
-            cb_SPA.setState(false, linkHref, linkTitle);
+            cb_SPA.setState(false, location.pathname + location.search + linkHref, linkTitle);
         }
         catch
         {
@@ -2300,7 +2300,7 @@ function SetResponse(evt, ResponseResult, ViewState, RequestName)
         cb_AppendJavaScriptTag(ResponseResult);
         cb_Initialization(cb_GetResponseLocation());
 
-        const path = location.pathname + location.search + location.hash
+        const path = location.pathname + location.search + location.hash;
         cb_SPA.setState(false, path);
     }
 }
