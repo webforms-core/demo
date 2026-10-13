@@ -883,7 +883,7 @@ function cb_SetSPALink(obj)
 
         const targetAttr = link.getAttribute("target");
 
-        let linkTitle = (WebFormsOptions.SetTitleBySPALink && (evt.currentTarget.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", evt.currentTarget.getAttribute("title")) : null);
+        let linkTitle = (WebFormsOptions.SetTitleBySPALink && (link.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", link.getAttribute("title")) : null);
         
         if (linkHref.length > 1 && linkHref.substring(0, 2) == "#~")
             linkHref = linkHref.substring(2);
