@@ -888,12 +888,12 @@ function cb_SetSPALink(obj)
         if (hrefAttr.startsWith("#"))
         {   
             if (!WebFormsOptions.IgnoreQueryAndHashInSPALink)
-                link.setAttribute("onclick", `PreventDefault(event);cb_AddHashState('${hrefAttr}');`);
+                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${hrefAttr}');`);
             return;
         }
 
         if (!hrefAttr.includes("://") && !hrefAttr.startsWith("mailto:") && !hrefAttr.startsWith("tel:") && (!targetAttr || targetAttr === "_self"))
-            link.setAttribute("onclick", `PreventDefault(event);GetBack(event, '${hrefAttr}');`);
+            cb_AddAttribute(link, "onclick", `PreventDefault(event);GetBack(event, '${hrefAttr}');`);
     });
 }
 
@@ -10113,6 +10113,15 @@ function cb_FindMorphMatch(parent, oldChild, newChild)
         }
 
     return oldChild;
+}
+
+function cb_AddAttribute(el, name, value)
+{
+    const current = el.getAttribute(name);
+    if (current)
+        el.setAttribute(name, current + ";" + value);
+    else
+        el.setAttribute(name, value);
 }
 
 /* End Tag Change */
