@@ -20,7 +20,5 @@ export function PageLoad(evt)
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
 
-    return form.response();
+    RunWebForms(evt, form.response());
 }
-
-FrontBack(null, "/demo/script/module/only-front/root.js");
