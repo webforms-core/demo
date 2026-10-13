@@ -8632,9 +8632,9 @@ class cb_SPA
         {
             if (cb_PopstateIsPending)
             {
+                alert("Bad effect!");
                 event.preventDefault();
                 history.forward();
-                alert("Bad effect!");
                 return;
             }
                 
