@@ -9,7 +9,7 @@ export function PageLoad(evt)
     form.setCommentEvent("-", HtmlEvent.OnTouchStart, "close-menu");
 
     form.callFront("/demo/script/module/only-front/main.js"); // Set default page
-    form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change");
+    form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change", "<main>");
 
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
