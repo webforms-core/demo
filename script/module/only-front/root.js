@@ -20,7 +20,7 @@ export function PageLoad(evt)
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
 
-    RunWebForms(evt, form.response());
+    SetResponse(evt, form.exportToHtmlComment());
 }
 
 PageLoad();
