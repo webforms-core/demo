@@ -875,20 +875,23 @@ function cb_SetSPALink(obj)
     const links = obj ? obj.querySelectorAll('a') : document.body.querySelectorAll('a');
 
     links.forEach(link =>
-    {
-        const targetAttr = link.getAttribute("target");
+    {       
         let hrefAttr = link.getAttribute("href");
 
         if (!hrefAttr)
             return;
 
+        const targetAttr = link.getAttribute("target");
+
+        let linkTitle = (WebFormsOptions.SetTitleBySPALink && (evt.currentTarget.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", evt.currentTarget.getAttribute("title")) : null);
+        
         if (hrefAttr.length > 1 && hrefAttr.substring(0, 2) == "#~")
             hrefAttr = hrefAttr.substring(2);
 
         if (hrefAttr.startsWith("#"))
         {   
             if (!WebFormsOptions.IgnoreQueryAndHashInSPALink)
-                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${hrefAttr}');`);
+                cb_AddAttribute(link ,"onclick", `PreventDefault(event);cb_AddHashState('${hrefAttr}', '${linkTitle}');`);
             return;
         }
 
@@ -897,17 +900,23 @@ function cb_SetSPALink(obj)
     });
 }
 
-function cb_AddHashState(hrefAttr)
+function cb_AddHashState(hrefAttr, linkTitle)
 {
     window.location.href = hrefAttr;
+    
+    if (linkTitle)
+        document.title = linkTitle;
+
+    history.pushState(window.history.state, "", hrefAttr);
+    window.scrollTo(0, 0);
+
     cb_PopstateIsPending = true;
 
     setTimeout(() =>
     {
         try
         {
-            history.pushState(window.history.state, "", hrefAttr);
-            window.scrollTo(0, 0);
+            cb_SPA.setState(false, hrefAttr, linkTitle);
         }
         catch
         {
