@@ -883,7 +883,7 @@ function cb_SetSPALink(obj)
 
         const targetAttr = link.getAttribute("target");
 
-        let linkTitle = (WebFormsOptions.SetTitleBySPALink && (link.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", link.getAttribute("title")) : null);
+        let linkTitle = (WebFormsOptions.SetTitleBySPALink && (link.hasAttribute("title")) ? WebFormsOptions.SPAGlobalTitle.Replace("{{title}}", link.getAttribute("title")) : false);
         
         if (linkHref.length > 1 && linkHref.substring(0, 2) == "#~")
             linkHref = linkHref.substring(2);
@@ -902,13 +902,13 @@ function cb_SetSPALink(obj)
 
 function cb_AddHashState(linkHref, linkTitle)
 {
+    history.pushState(window.history.state, "", linkHref);
+    window.scrollTo(0, 0);
+
     location.href = linkHref;
 
     if (linkTitle)
         document.title = linkTitle;
-
-    history.pushState(window.history.state, "", linkHref);
-    window.scrollTo(0, 0);
 
     cb_PopstateIsPending = true;
 
