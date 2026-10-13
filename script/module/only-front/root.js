@@ -22,3 +22,5 @@ export function PageLoad(evt)
 
     RunWebForms(evt, form.response());
 }
+
+PageLoad();
