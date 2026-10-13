@@ -20,7 +20,7 @@ export function PageLoad(evt)
     form.startIndex("close-menu");
     form.setChecked("menu-toggle", false);
 
-    form.runActionControls(form.getWebFormsData());
+    return form.response();
 }
 
-PageLoad();
+FrontBack(null, "/demo/script/module/only-front/root.js");
