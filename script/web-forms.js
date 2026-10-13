@@ -907,7 +907,7 @@ function cb_AddHashState(linkHref, linkTitle)
     if (linkTitle)
         document.title = linkTitle;
 
-    history.pushState(window.history.state, "", linkHref);
+    //history.pushState(window.history.state, "", linkHref);
     window.scrollTo(0, 0);
 
     cb_PopstateIsPending = true;
@@ -916,7 +916,7 @@ function cb_AddHashState(linkHref, linkTitle)
     {
         try
         {
-            cb_SPA.setState(false, location.pathname + location.search + linkHref, linkTitle);
+            cb_SPA.setState(true, location.pathname + location.search + linkHref, linkTitle);
         }
         catch
         {
