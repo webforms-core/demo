@@ -905,7 +905,7 @@ function cb_AddHashState(linkHref, linkTitle)
     history.pushState(window.history.state, "", linkHref);
     window.scrollTo(0, 0);
 
-    location.href = linkHref;
+    //location.href = linkHref;
 
     if (linkTitle)
         document.title = linkTitle;
