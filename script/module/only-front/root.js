@@ -8,7 +8,7 @@ export function PageLoad(evt)
     form.setCommentEvent("<nav>|<a>*", HtmlEvent.OnClick, "close-menu");
     form.setCommentEvent("-", HtmlEvent.OnTouchStart, "close-menu");
 
-    form.callFront("/demo/script/module/only-front/main.js"); // Set default page
+    form.callFront("/demo/script/module/only-front/main.js", "", "<main>"); // Set default page
     form.setCommentEventListener(InputPlace.WINDOW, HtmlEventListener.HashChange, "hash-change", "<main>");
 
     form.startIndex("close-menu");
@@ -17,7 +17,7 @@ export function PageLoad(evt)
     form.startIndex("hash-change");
     form.addSaveValue("hash", Fetch.HASH);
     form.setTextOperationSaveValue("hash", "textafter", '#');
-    form.callFront("/demo/script/module/only-front/{{path}}.js"); // Set default page
+    form.callFront("/demo/script/module/only-front/{{path}}.js", "", "<main>");
     form.assignReplace("{{path}}", Fetch.save("hash"));
     
     SetResponse(evt, form.exportToHtmlComment(), "comment");
