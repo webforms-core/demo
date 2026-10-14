@@ -8637,7 +8637,7 @@ class cb_SPA
                 return;
             }
                 
-            const pathname = location.pathname;
+            const pathname = location.pathname + location.search + location.hash;
             if (event.state && event.state.html)
             {
                 cb_GetStateBodyLocation().outerHTML = event.state.html;
