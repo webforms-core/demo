@@ -902,6 +902,9 @@ function cb_SetSPALink(obj)
 
 function cb_AddHashState(linkHref, linkTitle)
 {  
+    if (location.hash == linkHref)
+        return;
+
     location.href = linkHref;
 
     if (linkTitle)
