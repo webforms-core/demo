@@ -34,9 +34,9 @@ export function PageLoad(evt)
         <style>
             #GameArea
             {
-                width:1280px;
                 height:720px;
-                display:table;
+                width: 100%;
+                max-width:1280px;
                 background-color:lightblue;
                 overflow-x:auto;
                 white-space:nowrap;
