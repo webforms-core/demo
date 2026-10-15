@@ -27,7 +27,7 @@ export function PageLoad(evt)
     initialization(form);
 
     form.startIndex("end");
-    form.setText("Finall", "Your point is: " + form.inject(Fetch.getText("Points|<span>")));
+    form.setText("Finall", "@:Your point is: " + form.inject(Fetch.getText("Points|<span>")));
     reset(form);
 
     return `
