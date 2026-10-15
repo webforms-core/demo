@@ -32,8 +32,11 @@ export function PageLoad(evt)
 
     return `
         <style>
-            #GameArea
-            {
+
+            main {
+                width: 100% !important;
+            }
+            #GameArea {
                 height:720px;
                 width: 100%;
                 max-width:1280px;
@@ -43,19 +46,16 @@ export function PageLoad(evt)
                 display:inline-block;
             }
 
-            #Finall
-            {
+            #Finall {
                 color:green;
             }
 
-            .bubblebox
-            {
+            .bubblebox {
                 width:100%;
                 height:100px;
             }
 
-            .bubble
-            {
+            .bubble {
                 width:100px;
                 height:100px;
                 background-color:#c9e83b;
@@ -67,8 +67,7 @@ export function PageLoad(evt)
             }
 
             .bubble::before,
-            .bubble::after
-            {
+            .bubble::after {
                 content:"";
                 position:absolute;
                 width:120px;
@@ -77,22 +76,19 @@ export function PageLoad(evt)
                 border-radius:50%;
             }
 
-            .bubble::before
-            {
+            .bubble::before {
                 top:-10px;
                 left:-35px;
                 transform:rotate(45deg);
             }
 
-            .bubble::after
-            {
+            .bubble::after {
                 bottom:-10px;
                 right:-35px;
                 transform:rotate(45deg);
             }
 
-            .pusher
-            {
+            .pusher {
                 width:100px;
                 height:100px;
                 float:left;
